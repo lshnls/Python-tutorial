@@ -37,46 +37,45 @@ class Coords:
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-    def within_x(co1, co2):
-        if (co1.x1 > co2.x1 and co1.x1 < co2.x2) \
-        or (co1.x2 > co2.x1 and co1.x2 < co2.x2) \
-        or (co2.x1 > co1.x1 and co2.x1 < co1.x2) \
-        or (co2.x2 > co1.x1 and co2.x2 < co1.x2):
-            return True
-        else:
-            return False
-
-    def within_y(co1, co2):
-        if (co1.y1 > co2.y1 and co1.y1 < co2.y2) \
-        or (co1.y2 > co2.y1 and co1.y2 < co2.y2) \
-        or (co2.y1 > co1.y1 and co2.y1 < co1.y2) \
-        or (co2.y2 > co1.y1 and co2.y2 < co1.y2):
-            return True
-        else:
-            return False
-
-    def collided_left(co1, co2):
-        if within_y(co1, co2):
-            if co1.x1 <= co2.x2 and co1.x1 >= co2.x1:
-                return True
+def within_x(co1, co2):
+    if (co1.x1 > co2.x1 and co1.x1 < co2.x2) \
+    or (co1.x2 > co2.x1 and co1.x2 < co2.x2) \
+    or (co2.x1 > co1.x1 and co2.x1 < co1.x2) \
+    or (co2.x2 > co1.x1 and co2.x2 < co1.x2):
+        return True
+    else:
         return False
 
-    def collided_right(co1, co2):
-        if within_y(co1, co2):
-            if co1.x2 >= co2.x1 and co1.x2 <= co2.x2:
-                return True
-                return False
-    def collided_top(co1, co2):
-        if within_x(co1, co2):
-            if co1.y1 <= co2.y2 and co1.y1 >= co2.y1:
-                return True
-                return False
-    def collided_bottom(y, co1, co2):
-        if within_x(co1, co2):
-            y_calc = co1.y2 + y
-        if y_calc >= co2.y1 and y_calc <= co2.y2:
-            return True
+def within_y(co1, co2):
+    if (co1.y1 > co2.y1 and co1.y1 < co2.y2) \
+    or (co1.y2 > co2.y1 and co1.y2 < co2.y2) \
+    or (co2.y1 > co1.y1 and co2.y1 < co1.y2) \
+    or (co2.y2 > co1.y1 and co2.y2 < co1.y2):
+        return True
+    else:
         return False
+
+def collided_left(co1, co2):
+    if within_y(co1, co2):
+        if co1.x1 <= co2.x2 and co1.x1 >= co2.x1:
+            return True
+    return False
+def collided_right(co1, co2):
+    if within_y(co1, co2):
+        if co1.x2 >= co2.x1 and co1.x2 <= co2.x2:
+            return True
+            return False
+def collided_top(co1, co2):
+    if within_x(co1, co2):
+        if co1.y1 <= co2.y2 and co1.y1 >= co2.y1:
+            return True
+            return False
+def collided_bottom(y, co1, co2):
+    if within_x(co1, co2):
+        y_calc = co1.y2 + y
+    if y_calc >= co2.y1 and y_calc <= co2.y2:
+        return True
+    return False
 class Sprite:
     def __init__(self, game):
         self.game = game
@@ -225,23 +224,23 @@ class DoorSprite(Sprite):
         self.coordinates = Coords(x, y, x + (width / 2), y + height)
         self.endgame = True
         g = Game()
-        latform1 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
+        platform1 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
         0, 480, 100, 10)
-        latform2 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
+        platform2 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
                                   150, 440, 100, 10)
-        latform3 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
+        platform3 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
                                   300, 400, 100, 10)
-        latform4 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
+        platform4 = PlatformSprite(g, PhotoImage(file="platform1.gif"), \
                                   300, 160, 100, 10)
-        latform5 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
+        platform5 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
                                   175, 350, 66, 10)
-        latform6 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
+        platform6 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
                                   50, 300, 66, 10)
-        latform7 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
+        platform7 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
                                   170, 120, 66, 10)
-        latform8 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
+        platform8 = PlatformSprite(g, PhotoImage(file="platform2.gif"), \
                                   45, 60, 66, 10)
-        latform9 = PlatformSprite(g, PhotoImage(file="platform3.gif"), \
+        platform9 = PlatformSprite(g, PhotoImage(file="platform3.gif"), \
                                   170, 250, 32, 10)
         platform10 = PlatformSprite(g, PhotoImage(file="platform3.gif"), \
                                     230, 200, 32, 10)
