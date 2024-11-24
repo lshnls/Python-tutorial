@@ -235,5 +235,167 @@ class Giraffes(Mammals):
 
 harold = Giraffes()
 reginald = Giraffes()
-                              reginald.move()
+reginald.move()
 harold.eat_leaves_from_trees()
+
+class Giraffes(Mammals):
+    def find_food(self):
+        self.move()
+        print("Я нашел еду!")
+        self.eat_food()
+
+class Giraffes(Mammals):
+    def find_food(self):
+        self.move()
+        print("Я нашел еду!")
+        self.eat_food()
+    def eat_leaves_from_trees(self):
+        self.eat_food()
+    def dance_a_jig(self):
+        self.move()
+        self.move()
+        self.move()
+        self.move()
+
+reginald = Giraffes()
+reginald.dance_a_jig()
+
+class Giraffes:
+    def __init__(self, spots):
+        self.giraffe_spots = spots
+
+ozwald = Giraffes(100)
+gertrude = Giraffes(150)
+print(ozwald.giraffe_spots)
+print(gertrude.giraffe_spots)
+
+
+fruit = ['яблоко', 'банан', 'клементин', 'питайя']
+length = len(fruit)
+for x in range(0, length):
+    print('фрукт с индексом %s: %s' % (x, fruit[x]))
+
+# Работа с файлами
+test_file = open('book.py')
+text = test_file.read()
+print(text)
+
+test_file = open('myfile.txt', 'w')
+test_file.write('это – тестовый файл')
+test_file.close()
+
+# Копирование
+
+import copy
+
+class Animal:
+    def __init__(self, species, number_of_legs, color):
+        self.species = species
+        self.number_of_legs = number_of_legs
+        self.color = color
+
+harry = Animal('гиппогриф', 6, 'розовый')
+
+harriet = copy.copy(harry)
+print(harry.species)
+print(harriet.species)
+
+
+carrie = Animal('химера', 4, 'в зеленый горошек')
+billy = Animal('богл', 0, 'узорчатый')
+
+my_animals = [harry, carrie, billy]
+more_animals = copy.copy(my_animals)
+print(more_animals[0].species)
+print(more_animals[1].species)
+print(billy.species)
+
+my_animals[0].species = 'вампир'
+sally = Animal('сфинкс', 4, 'песочный')
+my_animals.append(sally)
+
+
+more_animals = copy.deepcopy(my_animals)
+my_animals[0].species = 'дракон'
+print(my_animals[0].species)
+print(more_animals[0].species)
+
+import keyword
+print(keyword.iskeyword('if'))
+print(keyword.iskeyword('ozwald'))
+
+import random
+print(random.randint(1, 100))
+
+# Угадай число
+
+num = random.randint(1, 100)
+while True:
+    break
+    print('Угадайте число от 1 до 100')
+    guess = input()
+    i = int(guess)
+    if i == num:
+        print('Правильно!')
+        break
+    elif i < num:
+        print('Загаданное число больше')
+
+    elif i > num:
+        print('Загаданное число меньше')
+
+# перетасовка shuffle
+
+desserts = ['мороженое', 'блинчики', 'пирог', 'печенье','конфеты']
+random.shuffle(desserts)
+print(desserts)
+
+import sys
+print(sys.version)
+
+import time
+print(time.time())
+
+
+def lots_of_numbers(max):
+    t1 = time.time()
+    for x in range(0, max):
+        print(x)
+        t2 = time.time()
+        print('Прошло %s секунд' % (t2-t1))
+
+
+lots_of_numbers(1000)
+
+print(time.asctime())
+
+t = (2020, 2, 23, 10, 30, 48, 6, 0, 0)
+print(time.asctime(t))
+print(time.localtime())
+
+
+t = time.localtime()
+year = t[0]
+month = t[1]
+print(year)
+print(month)
+
+for x in range(1, 3):
+    print(x)
+    time.sleep(1)
+
+import pickle
+game_data = {
+'позиция-игрока' : 'С23 В45',
+'карманы' : ['ключи', 'карманный нож', 'гладкий камень'],
+'рюкзак' : ['веревка', 'молоток', 'яблоко'],
+'деньги' : 158.50
+}
+save_file = open('save.dat', 'wb')
+pickle.dump(game_data, save_file)
+save_file.close()
+
+load_file = open('save.dat', 'rb')
+loaded_game_data = pickle.load(load_file)
+load_file.close()
+print(loaded_game_data)
